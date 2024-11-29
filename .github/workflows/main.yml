@@ -34,7 +34,7 @@ jobs:
       # Шаг 4: Собрать документацию
       - name: Build documentation
         run: |
-          cd docs
+          cd GitHub2/docs
           make html
 
       # Шаг 5: Развернуть документацию на GitHub Pages
