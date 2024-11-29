@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: Build and Deploy Documentation
 
 on:
   push:
@@ -11,22 +11,35 @@ on:
       - master
 
 jobs:
-  build:
+  build-docs:
     runs-on: ubuntu-latest
 
     steps:
+      # Шаг 1: Клонировать репозиторий
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Шаг 2: Установить Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.9"
 
+      # Шаг 3: Установить зависимости
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          pip install sphinx sphinx-autodoc-typehints
 
-      - name: Run tests
+      # Шаг 4: Собрать документацию
+      - name: Build documentation
         run: |
-          pytest
+          cd docs
+          make html
+
+      # Шаг 5: Развернуть документацию на GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/build/html
