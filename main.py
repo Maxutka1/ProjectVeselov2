@@ -1,13 +1,25 @@
 def add(a, b):
+    """
+    Суммирует два числа.
+
+    Args:
+        a (int): Первое число.
+        b (int): Второе число.
+
+    Returns:
+        int: Сумма двух чисел.
+    """
     return a + b
 
-def subtract(a, b):
-    return a - b
-
 def multiply(a, b):
-    return a * b
+    """
+    Перемножает два числа.
 
-if __name__ == "__main__":
-    print("2 + 3 =", add(2, 3))
-    print("5 - 3 =", subtract(5, 3))
-    print("4 * 2 =", multiply(4, 2))
+    Args:
+        a (int): Первое число.
+        b (int): Второе число.
+
+    Returns:
+        int: Произведение двух чисел.
+    """
+    return a * b
