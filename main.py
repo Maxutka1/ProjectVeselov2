@@ -4,5 +4,5 @@ def add(a, b):
 def new_function(): 
     return "New feature added!"
 
-if name == "__main__":    
+if __name__ == "__main__":    
     print("2 + 3 =", add(2, 3))
